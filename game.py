@@ -3,7 +3,11 @@ class Game:
         pass
 
     def check_if_combination(self):
-        pass
+        """
+        Check rules at PDF file
+        :return:
+        """
+
 
     def check_if_win(self, *players):
         pass
