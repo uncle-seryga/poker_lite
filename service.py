@@ -157,9 +157,10 @@ class Combinations:
         else:
             return False
 
-    @staticmethod
-    def straight_flush(args):
-        result = all([Combinations().straight(args), Combinations().flush(args)])
+    def straight_flush(self, args):
+        name = 'Straight Flush'
+        value = 9
+        result = all([self.straight(args), self.flush(args)])
         return result
 
     def royal_flush(self, *args):
