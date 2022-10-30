@@ -5,9 +5,9 @@ class Deck:
     def __init__(self):
         self.denomination = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-        suit = ["♠", "♥", "♣", "♦"]
+        self.suit = ["♠", "♥", "♣", "♦"]
         deck = {}
-        for x in suit:
+        for x in self.suit:
             itt = 0
             for y in self.denomination:
                 deck.update({f"{y}{x}": values[itt]})
@@ -103,31 +103,39 @@ class Combinations:
         return False
 
     def straight(self, args):
-        name = 'set'
+        name = 'straight'
         value = 5
         data = self.sorted_data(args)
         temp = []
         data = data[0]
-        step = 0
-        print(data)
         for x in data:
             temp.append(Deck().denomination.index(x))
-        print(temp)
         res = 0
-        for x in range(len(temp)-1):
+        for x in range(len(temp) - 1):
             if temp[x] + 1 == temp[x + 1]:
-                res+=1
-        if res>=4:
+                res += 1
+        if res >= 4:
             return True
         else:
             return False
 
-    def flush(self, *args):
-        pass
+    def flush(self, args):
+        name = "flush"
+        value = 6
+        data = self.sorted_data(args)
+        result = []
+        print(data[1])
+        for x in Deck().suit:
+            result.append(data[1].count(x))
+        result.sort()
+        if result[-1] >= 5:
+            return True
+        else:
+            return False
 
     def full_house(self, args):
-        name = 'set'
-        value = 4
+        name = 'full house'
+        value = 7
         data = self.sorted_data(args)
         result = []
         for x in data[0]:
