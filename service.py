@@ -43,7 +43,6 @@ class Combinations:
         n = []
         t = []
         counter = 0
-        print(data)
         for x in data:
             if x == '1':
                 n.append('10')
@@ -120,11 +119,11 @@ class Combinations:
             return False
 
     def flush(self, args):
+        # made by Alex
         name = "flush"
         value = 6
         data = self.sorted_data(args)
         result = []
-        print(data[1])
         for x in Deck().suit:
             result.append(data[1].count(x))
         result.sort()
@@ -155,10 +154,13 @@ class Combinations:
         result.sort()
         if result[-1] == 4:
             return True
-        return False
+        else:
+            return False
 
-    def straight_flush(self, *args):
-        pass
+    @staticmethod
+    def straight_flush(args):
+        result = all([Combinations().straight(args), Combinations().flush(args)])
+        return result
 
     def royal_flush(self, *args):
         pass
