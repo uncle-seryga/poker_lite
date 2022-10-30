@@ -3,13 +3,13 @@ import random
 
 class Deck:
     def __init__(self):
-        denomination = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+        self.denomination = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
         suit = ["♠", "♥", "♣", "♦"]
         deck = {}
         for x in suit:
             itt = 0
-            for y in denomination:
+            for y in self.denomination:
                 deck.update({f"{y}{x}": values[itt]})
                 itt += 1
         self.__deck = deck
@@ -102,8 +102,25 @@ class Combinations:
             return True
         return False
 
-    def straight(self, *args):
-        pass
+    def straight(self, args):
+        name = 'set'
+        value = 5
+        data = self.sorted_data(args)
+        temp = []
+        data = data[0]
+        step = 0
+        print(data)
+        for x in data:
+            temp.append(Deck().denomination.index(x))
+        print(temp)
+        res = 0
+        for x in range(len(temp)-1):
+            if temp[x] + 1 == temp[x + 1]:
+                res+=1
+        if res>=4:
+            return True
+        else:
+            return False
 
     def flush(self, *args):
         pass
