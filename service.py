@@ -163,5 +163,20 @@ class Combinations:
         result = all([self.straight(args), self.flush(args)])
         return result
 
-    def royal_flush(self, *args):
-        pass
+    def royal_flush(self, args):
+        name = 'Royal Flush'
+        value = 10
+        data = self.sorted_data(args)
+        if_flush = self.flush(args)
+        temp = 0
+        for x in ["10",'J','Q','K','A']:
+            if x in data[0]:
+                temp+=1
+        if temp >= 5:
+            if_royal = True
+        else:
+            if_royal = False
+        if if_royal and if_flush:
+            return True
+        else:
+            return False
