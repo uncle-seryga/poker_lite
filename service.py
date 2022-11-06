@@ -169,9 +169,9 @@ class Combinations:
         data = self.sorted_data(args)
         if_flush = self.flush(args)
         temp = 0
-        for x in ["10",'J','Q','K','A']:
+        for x in ["10", 'J', 'Q', 'K', 'A']:
             if x in data[0]:
-                temp+=1
+                temp += 1
         if temp >= 5:
             if_royal = True
         else:
@@ -180,3 +180,10 @@ class Combinations:
             return True
         else:
             return False
+
+
+class FileMethods:
+    @staticmethod
+    def create_room(number):
+        file = open(f"games/game#{number}.json", 'w')
+        return file

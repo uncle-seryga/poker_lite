@@ -1,20 +1,25 @@
 import random
 
+import db
 import service
 
 
 class Game:
-    def set_game(self, player_quantity: int, players_names: list):
+    def set_game(self, players_ids: list):
+        file = service.FileMethods().create_room(db.DB().new_room())
+        file_content = {}
         this_deck = service.Deck().set_deck()
         random.shuffle(this_deck)
         players_hands = []
-        table, flop, reaver = [], [this_deck.pop()], [this_deck.pop()]
+        table = []
+        file_content.update({"flop": [this_deck.pop()], "reaver": [this_deck.pop()]})
         for x in range(3):
             table.append(this_deck.pop())
-        for x in range(player_quantity):
-            players_hands.append([this_deck.pop(), this_deck.pop()])
-        print(table, flop, reaver, players_hands)
-
+        file_content.update({"table": table})
+        for x in players_ids:
+            file_content.update({x: [this_deck.pop(), this_deck.pop()]})
+        file.write(str(file_content))
+        print(file_content)
 
         """
         JSON File with room settings and game
