@@ -14,17 +14,17 @@ class Deck:
                 itt += 1
         self.__deck = deck
 
-    def __set_deck(self):
+    def set_deck(self):
         return list(self.__deck.keys())
 
-    def shuffled_deck(self):
-        random.shuffle(self.__set_deck())
+    """def shuffled_deck(self):
+        random.shuffle(self.set_deck())"""
 
     def get_card_value(self, card):
         return self.__deck.get(card, 0)
 
     def set_dummy_data(self):
-        return self.__set_deck()
+        return self.set_deck()
 
 
 class Combinations:
