@@ -187,3 +187,8 @@ class FileMethods:
     def create_room(number):
         file = open(f"games/game#{number}.json", 'w')
         return file
+
+    @staticmethod
+    def get_data_from_room(room_id: int) -> dict:
+        with open(f'rooms/{room_id}.json', 'r') as file:
+            return eval(file.read())

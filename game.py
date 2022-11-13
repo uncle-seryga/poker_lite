@@ -29,6 +29,9 @@ class Game:
         """
         pass
 
+    def get_players_from_room(self, room_number):
+        pass
+
     def check_if_combination(self):
         """
         Check rules at PDF file

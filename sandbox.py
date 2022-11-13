@@ -19,4 +19,4 @@ service.Combinations().straight_flush("A♣2♠4♠5♠3♠6♠7♣")
 
 service.Combinations().royal_flush("A♣Q♣K♣J♣10♣2♠6♥")"""
 
-game.Game().set_game(["s", "a", "i"])
+game.Game().set_game()
