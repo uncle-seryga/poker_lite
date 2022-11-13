@@ -186,9 +186,19 @@ class FileMethods:
     @staticmethod
     def create_room(number):
         file = open(f"games/game#{number}.json", 'w')
+        file.write("{}")
         return file
 
     @staticmethod
     def get_data_from_room(room_id: int) -> dict:
         with open(f'rooms/{room_id}.json', 'r') as file:
             return eval(file.read())
+
+    @staticmethod
+    def add_to_the_room(room_id: int, player_name: str, bet: int, telegram_id: int) -> None:
+        with open(f'rooms/{room_id}.json', 'r') as file:
+            data: dict = eval(file.read())
+        with open(f'rooms/{room_id}.json', 'w') as file:
+            data.update({player_name: [telegram_id, bet]})
+            file.write(str(data))
+            print(f"Player {player_name} addet to the room # {room_id}")

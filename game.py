@@ -29,8 +29,8 @@ class Game:
         """
         pass
 
-    def get_players_from_room(self, room_number):
-        pass
+    def get_players_list_from_room(self, data: dict) -> list:
+        return list(data.keys())
 
     def check_if_combination(self):
         """
